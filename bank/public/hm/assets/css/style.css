@@ -2974,6 +2974,12 @@ select:focus {
     line-height: 60px;
 }
 
+.site-logo {
+  width: 80px;
+  height: auto;
+}
+
+
 .single-features-style2 .overlay-text-box .btns-box .static-btn a span {
     position: relative;
     display: block;
