@@ -78,19 +78,29 @@
   </div>
 
   <script>
-    document.getElementById("loginForm").addEventListener("submit", function(event) {
-      event.preventDefault(); // Prevent form from submitting
+  document.getElementById("loginForm").addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevent form from submitting
 
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value;
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value;
 
-      if (username === "Keanucharles" && password === "America2025") {
-        window.location.href = "dashboard.html"; // redirect if credentials are correct
-      } else {
-        document.getElementById("error").style.display = "block";
-      }
-    });
-  </script>
+    if (username === "Keanucharles" && password === "America2025") {
+      // Store login state in session
+      sessionStorage.setItem("loggedIn", true);
+
+      // Try dashboard.html first; fallback to index.html if not found
+      fetch("../dashboard.html").then(response => {
+        if (response.ok) {
+          window.location.href = "../dashboard.html";
+        } else {
+          window.location.href = "../index.html";
+        }
+      });
+    } else {
+      document.getElementById("error").style.display = "block";
+    }
+  });
+</script>
 
 </body>
 </html>
